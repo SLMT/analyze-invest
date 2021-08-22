@@ -28,7 +28,7 @@ fn main() {
     // - Won't save duplicate transactions
 
     // Command: create [FUND]
-    // Command: add-history [FUND]
+    // Command: add-history [FUND] [HISTORY FILE]
     // Command: generate-timeline [FUND]
 
     // Parse the command
