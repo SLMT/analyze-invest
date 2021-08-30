@@ -1,7 +1,11 @@
 
+mod command;
 mod error;
 
 use clap::{AppSettings, Clap};
+use colored::*;
+
+use error::AnalyzerResult;
 
 #[derive(Clap)]
 #[clap(version = "1.0", author = "Yu-Shan Lin (sam123456777@gmail.com)")]
@@ -35,9 +39,17 @@ fn main() {
 
     // Parse the command
     let opts: Command = Command::parse();
+    if let Err(e) = run(opts) {
+        println!("{}: {}", "Error".red(), e);
+    }
+}
+
+fn run(opts: Command) -> AnalyzerResult<()> {
     match opts.subcmd {
         SubCommand::Create(cmd) => {
-            println!("Fund name: {}", cmd.fund);
+            command::create::create(&cmd.fund)?;
         }
     }
+
+    Ok(())
 }
