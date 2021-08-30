@@ -1,4 +1,6 @@
 
+mod error;
+
 use clap::{AppSettings, Clap};
 
 #[derive(Clap)]
